@@ -20,7 +20,7 @@ public class Main {
         for(int i = 0; i < 10; i++)
             for(int j = 0; j < 10; j++)
             {
-                if(j == 0)   continue;
+                if(j == 0 && i == 0)   continue;
                 GridPeice newPiece = new GridPeice(i, j);
                 previousGridPeice.SetNextGridPiece(newPiece);
                 previousGridPeice = newPiece;
@@ -46,11 +46,35 @@ public class Main {
             SnakePiece newPiece = new SnakePiece(row, column);
             previousSnakePiece.SetNextPiece(newPiece);
             previousSnakePiece = newPiece;
-            it.GridPieceIncrease(row, column, firstGridPeice);
+            it.GridPieceIncrease(row, column, firstGridPeice);  //***** this section will find the Grid piece with the same column and row, then increase the amount of host number */
         }
 
-        //***** reading instructions: */
+        //***** reading moves: */
+        Moves firstMove;
+        Moves previousMove;
+
         numberOfMoves = sc.nextInt();
+        firstMove = new Moves(sc.next().charAt(0));
+        previousMove = firstMove;
+
+
+        for(int i = 1; i < numberOfMoves; i++)
+        {
+            char newMove = sc.next().charAt(0);
+
+            Moves newMoves = new Moves(newMove);
+            previousMove.SetNextMove(newMoves);
+            previousMove = newMoves;
+        }
+
+        //***** moving the snake: */
+        Moves move = firstMove;
+        for(int i = 0; i < numberOfMoves; i++)
+        {
+            it.Move(move.GetMove(), firstSnakePiece, firstGridPeice);
+            move = move.GetNextMove();
+        }
+
         
     }
 }
