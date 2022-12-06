@@ -2,15 +2,19 @@ public class Iterator {
     
     public void GridPieceIncrease(int row, int column, GridPeice firstGridPeice)
     {
+        System.out.println("in mehtod grid piece increase: ");
+        System.out.println("the row is: " + row + " the column is: " + column);
         GridPeice iterator = firstGridPeice;
         while(true)
         {
             if(iterator.GetColumn() == column && iterator.GetRow() == row)
             {
+                System.out.println("in the if statement: ");
+                System.out.println("the row of grid is: " + iterator.GetRow() + " and the column of the grid piece is: " + iterator.GetColumn());
                 iterator.IncreaseNumberOf();
                 break;
             }
-            iterator = firstGridPeice.GetNextGridPiece();
+            iterator = iterator.GetNextGridPiece();
         }
     }
 
@@ -24,81 +28,132 @@ public class Iterator {
 
     private void MoveUp(SnakePiece snake, GridPeice firstGrid)
     {
-        SnakePiece previuPiece;
+        System.out.println("****************************");
+        System.out.println("in the move Up mehtod: ");
 
-        snake.SetRow(snake.GetRow() + 1);
+        int forNextRow = snake.GetRow();
+        int forNextColumn = snake.GetColumn();
+
+        snake.SetRow(snake.GetRow() - 1);
         GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-
-        previuPiece = snake;
         snake = snake.GetNextPiece();
 
         while(snake != null)
         {
-           snake.SetRow(previuPiece.GetRow());
-           snake.SetColumn(previuPiece.GetColumn());
-           GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-           previuPiece = snake;
-           snake = snake.GetNextPiece();
+            int nowRowForNext = snake.GetRow();
+            int nowColumnForNext = snake.GetColumn();
+
+            snake.SetRow(forNextRow);
+            snake.SetColumn(forNextColumn);
+
+            GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
+
+            forNextRow = nowRowForNext;
+            forNextColumn = nowColumnForNext;
+
+            snake = snake.GetNextPiece();
         }
+
     }
 
     private void MoveDown(SnakePiece snake, GridPeice firstGrid)
     {
-        SnakePiece previuPiece;
+        System.out.println("****************************");
+        System.out.println("in the move down mehtod: ");
 
-        snake.SetRow(snake.GetRow() - 1);
+        int forNextRow = snake.GetRow();
+        int forNextColumn = snake.GetColumn();
+
+        snake.SetRow(snake.GetRow() + 1);
         GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-
-        previuPiece = snake;
         snake = snake.GetNextPiece();
 
         while(snake != null)
         {
-           snake.SetRow(previuPiece.GetRow());
-           snake.SetColumn(previuPiece.GetColumn());
-           GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-           previuPiece = snake;
-           snake = snake.GetNextPiece();
+            int nowRowForNext = snake.GetRow();
+            int nowColumnForNext = snake.GetColumn();
+
+            snake.SetRow(forNextRow);
+            snake.SetColumn(forNextColumn);
+
+            GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
+
+            forNextRow = nowRowForNext;
+            forNextColumn = nowColumnForNext;
+
+            snake = snake.GetNextPiece();
         }
+
     }
 
     private void MoveRight(SnakePiece snake, GridPeice firstGrid)
     {
-        SnakePiece previuPiece;
+        System.out.println("****************************");
+        System.out.println("in the move right mehtod: ");
+
+        int forNextRow = snake.GetRow();
+        int forNextColumn = snake.GetColumn();
 
         snake.SetColumn(snake.GetColumn() + 1);
-        GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-
-        previuPiece = snake;
+        GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid); //***** increasing the number of the grid */
         snake = snake.GetNextPiece();
 
         while(snake != null)
         {
-           snake.SetRow(previuPiece.GetRow());
-           snake.SetColumn(previuPiece.GetColumn());
-           GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-           previuPiece = snake;
-           snake = snake.GetNextPiece();
+            int nowRowForNext = snake.GetRow();
+            int nowColumnForNext = snake.GetColumn();
+
+            snake.SetRow(forNextRow);
+            snake.SetColumn(forNextColumn);
+
+            GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
+
+            forNextRow = nowRowForNext;
+            forNextColumn = nowColumnForNext;
+
+            snake = snake.GetNextPiece();
         }
+
     }
 
     private void MoveLeft(SnakePiece snake, GridPeice firstGrid)
     {
-        SnakePiece previuPiece;
+        System.out.println("****************************");
+        System.out.println("in the move left mehtod: ");
+
+        int forNextRow = snake.GetRow();
+        int forNextColumn = snake.GetColumn();
 
         snake.SetColumn(snake.GetColumn() - 1);
         GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-
-        previuPiece = snake;
         snake = snake.GetNextPiece();
 
         while(snake != null)
         {
-           snake.SetRow(previuPiece.GetRow());
-           snake.SetColumn(previuPiece.GetColumn());
-           GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
-           previuPiece = snake;
-           snake = snake.GetNextPiece();
+            int nowRowForNext = snake.GetRow();
+            int nowColumnForNext = snake.GetColumn();
+
+            snake.SetRow(forNextRow);
+            snake.SetColumn(forNextColumn);
+
+            GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
+
+            forNextRow = nowRowForNext;
+            forNextColumn = nowColumnForNext;
+
+            snake = snake.GetNextPiece();
         }
+
+    }
+
+    public void print(SnakePiece snake)
+    {
+        while(snake != null)
+        {
+            System.out.println(snake.GetRow() + " " + snake.GetColumn());
+            snake = snake.GetNextPiece();
+        }
+
+        System.out.println("************************************************");
     }
 }

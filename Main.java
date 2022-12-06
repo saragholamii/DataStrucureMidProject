@@ -27,6 +27,7 @@ public class Main {
             }
 
         
+        System.out.println("enter the number of snake pieces: ");
         numberOfSnakePeices = sc.nextInt();
 
         //***** reading the first snake piece: */
@@ -40,6 +41,7 @@ public class Main {
         //***** reading other parts of the snake: */
         for(int i = 1; i < numberOfSnakePeices; i++)
         {
+            System.out.println("enter the next row and column: ");
             row = sc.nextInt();
             column = sc.nextInt();
 
@@ -53,13 +55,16 @@ public class Main {
         Moves firstMove;
         Moves previousMove;
 
+        System.out.println("enter the number of the moves: ");
         numberOfMoves = sc.nextInt();
+        System.out.println("enter the move: ");
         firstMove = new Moves(sc.next().charAt(0));
         previousMove = firstMove;
 
 
         for(int i = 1; i < numberOfMoves; i++)
         {
+            System.out.println("enter the next move: ");
             char newMove = sc.next().charAt(0);
 
             Moves newMoves = new Moves(newMove);
@@ -67,14 +72,42 @@ public class Main {
             previousMove = newMoves;
         }
 
+        //***** this part will print the moves agian:  */
+        System.out.println("******************************");
+        System.out.println("the moves are: ");
+        previousMove = firstMove;
+        System.out.println(previousMove.GetMove());
+        while(previousMove.GetNextMove() != null)
+        {
+            previousMove = previousMove.GetNextMove();
+            System.out.println(previousMove.GetMove());
+        }
+
+
+        System.out.println("calculating the moves: ");
         //***** moving the snake: */
         Moves move = firstMove;
         for(int i = 0; i < numberOfMoves; i++)
         {
+            System.out.println("the move is " + move.GetMove());
             it.Move(move.GetMove(), firstSnakePiece, firstGridPeice);
             move = move.GetNextMove();
         }
 
-        
+        System.out.println("****************************************************************");
+
+        it.print(firstSnakePiece);
+
+        System.out.println("****************************************************************");
+
+        GridPeice previousGrid = firstGridPeice;
+        System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+
+        while(previousGrid.GetNextGridPiece() != null)
+        {
+            previousGrid = previousGrid.GetNextGridPiece();
+            if(previousGrid.GetNumberOf() != 0)
+            System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+        }
     }
 }
