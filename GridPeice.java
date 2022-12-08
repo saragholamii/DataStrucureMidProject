@@ -52,5 +52,10 @@ public class GridPeice
     {
         return numberOf;
     }
+
+    public void SetNumberOf(int numberOf)
+    {
+        this.numberOf = numberOf;
+    }
     
 }

@@ -72,16 +72,16 @@ public class Main {
             previousMove = newMoves;
         }
 
-        //***** this part will print the moves agian:  */
-        System.out.println("******************************");
-        System.out.println("the moves are: ");
-        previousMove = firstMove;
-        System.out.println(previousMove.GetMove());
-        while(previousMove.GetNextMove() != null)
-        {
-            previousMove = previousMove.GetNextMove();
-            System.out.println(previousMove.GetMove());
-        }
+        // //***** this part will print the moves agian:  */
+        // System.out.println("******************************");
+        // System.out.println("the moves are: ");
+        // previousMove = firstMove;
+        // System.out.println(previousMove.GetMove());
+        // while(previousMove.GetNextMove() != null)
+        // {
+        //     previousMove = previousMove.GetNextMove();
+        //     System.out.println(previousMove.GetMove());
+        // }
 
 
         System.out.println("calculating the moves: ");
@@ -94,20 +94,99 @@ public class Main {
             move = move.GetNextMove();
         }
 
-        System.out.println("****************************************************************");
 
+
+        System.out.println("****************************************************************");
         it.print(firstSnakePiece);
-
         System.out.println("****************************************************************");
+        System.out.println("printing the none-Zero ones: ");
 
+
+
+        //****** just printing the not zero grids */
         GridPeice previousGrid = firstGridPeice;
         System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+        previousGrid = previousGrid.GetNextGridPiece();
 
-        while(previousGrid.GetNextGridPiece() != null)
+        while(previousGrid != null)
         {
-            previousGrid = previousGrid.GetNextGridPiece();
-            if(previousGrid.GetNumberOf() != 0)
+            if(previousGrid.GetNumberOf() != 0)                 
             System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+            previousGrid = previousGrid.GetNextGridPiece();
         }
+
+        // //****** creating the sorted grid list:  */
+
+        // //****** searching for first not zero:  */
+        // GridPeice firstNotZeroGrid = firstGridPeice;
+        // while(true)
+        // {
+        //     if(firstNotZeroGrid.GetNumberOf() != 0)   break;
+        //     firstNotZeroGrid = firstNotZeroGrid.GetNextGridPiece();
+        // }
+
+        // GridPeice theHeadOfTheSrtedGridList = new GridPeice(firstNotZeroGrid.GetRow(), firstGridPeice.GetColumn());
+        // GridPeice previusSortedGridList = theHeadOfTheSrtedGridList;
+
+        // firstNotZeroGrid = firstNotZeroGrid.GetNextGridPiece();
+        // while(firstNotZeroGrid != null)
+        // {
+        //     if(firstNotZeroGrid.GetNumberOf() != 0)
+        //     {
+        //         previusSortedGridList.SetNextGridPiece(firstNotZeroGrid);
+        //         previusSortedGridList = previusSortedGridList.GetNextGridPiece();
+        //         previusSortedGridList.SetNextGridPiece(null);
+        //     }
+        //     firstNotZeroGrid = firstNotZeroGrid.GetNextGridPiece();
+        // }
+
+        // //****** printing the sorted list:  */
+        // GridPeice aGridToGoThrowList = theHeadOfTheSrtedGridList;
+        // while(aGridToGoThrowList != null)
+        // {
+        //     System.out.println("the grid row: " + aGridToGoThrowList.GetRow() + " column: " + aGridToGoThrowList.GetColumn() + " the number: " + aGridToGoThrowList.GetNumberOf());
+        //     aGridToGoThrowList = aGridToGoThrowList.GetNextGridPiece();
+        // }
+
+        previousGrid = firstGridPeice;
+        while (previousGrid != null) 
+        {
+            if(previousGrid.GetNumberOf() != 0)     break;
+            previousGrid = previousGrid.GetNextGridPiece();   
+        }
+
+        GridPeice HeadOfList = new GridPeice(previousGrid.GetRow(), previousGrid.GetColumn());
+        HeadOfList.SetNumberOf(previousGrid.GetNumberOf());
+        GridPeice HeadCopy = HeadOfList;
+
+        previousGrid = previousGrid.GetNextGridPiece();
+        while(previousGrid != null)
+        {
+            if(previousGrid.GetNumberOf() != 0)
+            {
+                GridPeice newGrid = new GridPeice(previousGrid.GetRow(), previousGrid.GetColumn());
+                newGrid.SetNumberOf(previousGrid.GetNumberOf());
+                HeadCopy.SetNextGridPiece(newGrid);
+                HeadCopy = HeadCopy.GetNextGridPiece();
+            }
+
+            previousGrid = previousGrid.GetNextGridPiece();
+        }
+
+        System.out.println("********************************");
+        System.out.println("printing the sorted list");
+        //***** printing the sorted list:  */
+        HeadCopy = HeadOfList;
+        while(HeadCopy != null)
+        {
+            System.out.println("row: " + HeadCopy.GetRow() + " column: " + HeadCopy.GetColumn() + " the number: " + HeadCopy.GetNumberOf());
+            HeadCopy = HeadCopy.GetNextGridPiece();
+        }
+
+        
+
+        
+
+
     }
 }
