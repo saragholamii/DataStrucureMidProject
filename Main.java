@@ -96,24 +96,22 @@ public class Main {
 
 
 
-        System.out.println("****************************************************************");
-        it.print(firstSnakePiece);
-        System.out.println("****************************************************************");
-        System.out.println("printing the none-Zero ones: ");
+        // System.out.println("****************************************************************");
+        // it.print(firstSnakePiece);
+        // System.out.println("****************************************************************");
+        // System.out.println("printing the none-Zero ones: ");
 
+        // //****** just printing the not zero grids */
+        // GridPeice previousGrid = firstGridPeice;
+        // System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+        // previousGrid = previousGrid.GetNextGridPiece();
 
-
-        //****** just printing the not zero grids */
-        GridPeice previousGrid = firstGridPeice;
-        System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
-        previousGrid = previousGrid.GetNextGridPiece();
-
-        while(previousGrid != null)
-        {
-            if(previousGrid.GetNumberOf() != 0)                 
-            System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
-            previousGrid = previousGrid.GetNextGridPiece();
-        }
+        // while(previousGrid != null)
+        // {
+        //     if(previousGrid.GetNumberOf() != 0)                 
+        //     System.out.println("i: " + previousGrid.GetRow() + " j: " + previousGrid.GetColumn() + " number: " + previousGrid.GetNumberOf());
+        //     previousGrid = previousGrid.GetNextGridPiece();
+        // }
 
         // //****** creating the sorted grid list:  */
 
@@ -148,7 +146,7 @@ public class Main {
         //     aGridToGoThrowList = aGridToGoThrowList.GetNextGridPiece();
         // }
 
-        previousGrid = firstGridPeice;
+        GridPeice previousGrid = firstGridPeice;
         while (previousGrid != null) 
         {
             if(previousGrid.GetNumberOf() != 0)     break;
@@ -173,15 +171,61 @@ public class Main {
             previousGrid = previousGrid.GetNextGridPiece();
         }
 
-        System.out.println("********************************");
-        System.out.println("printing the sorted list");
-        //***** printing the sorted list:  */
+        // System.out.println("********************************");
+        // System.out.println("printing the sorted list");
+        // //***** printing the sorted list:  */
+        // HeadCopy = HeadOfList;
+        // while(HeadCopy != null)
+        // {
+        //     System.out.println("row: " + HeadCopy.GetRow() + " column: " + HeadCopy.GetColumn() + " the number: " + HeadCopy.GetNumberOf());
+        //     HeadCopy = HeadCopy.GetNextGridPiece();
+        // }
+
+        // System.out.println("the head of the list row: " + HeadOfList.GetRow() + " column: " + HeadOfList.GetColumn() + "number: " + HeadOfList.GetNumberOf());
+
+        //***** the number of the list:  */
         HeadCopy = HeadOfList;
-        while(HeadCopy != null)
+        int theNumberOfTheSortedList = 0;
+        while (HeadCopy != null) 
         {
-            System.out.println("row: " + HeadCopy.GetRow() + " column: " + HeadCopy.GetColumn() + " the number: " + HeadCopy.GetNumberOf());
+            theNumberOfTheSortedList ++;
             HeadCopy = HeadCopy.GetNextGridPiece();
         }
+
+        // System.out.println("the head of the list row after taking the number: " + HeadOfList.GetRow() + " column: " + HeadOfList.GetColumn() + "number: " + HeadOfList.GetNumberOf());
+        // System.out.println("******************************");
+        // System.out.println("the number of the list: " + theNumberOfTheSortedList);
+
+        //***** turn the None-ZeroLinklistGrid to an 3D array to sort it: */
+        int[][] sortedGrid = new int[theNumberOfTheSortedList][3];
+        int i = 0;
+        HeadCopy = HeadOfList;
+        while (HeadCopy != null) 
+        {
+            sortedGrid[i][0] = HeadCopy.GetRow();
+            sortedGrid[i][1] = HeadCopy.GetColumn();
+            sortedGrid[i][2] = HeadCopy.GetNumberOf();
+            HeadCopy = HeadCopy.GetNextGridPiece();  
+            i++;  
+        }
+
+        // System.out.println("*************************");
+        // System.out.println("printing the array: ");
+        // for(i = 0; i < theNumberOfTheSortedList; i++)
+        //     System.out.println("the row : " + sortedGrid[i][0] + " the column: " + sortedGrid[i][1] + " the number: " + sortedGrid[i][2]);
+
+        //***** sort it: */
+        MergSort ms = new MergSort();
+        ms.MergSortTheList(sortedGrid, 0, sortedGrid.length - 1);
+
+        System.out.println("***********************************************");
+        System.out.println("answer will be: ");
+        for(i = 0; i < theNumberOfTheSortedList; i++)
+            System.out.println("the row : " + sortedGrid[i][0] + " the column: " + sortedGrid[i][1] + " the number: " + sortedGrid[i][2]);
+
+
+
+        
 
         
 

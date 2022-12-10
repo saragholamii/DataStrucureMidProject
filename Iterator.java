@@ -2,15 +2,15 @@ public class Iterator {
     
     public void GridPieceIncrease(int row, int column, GridPeice firstGridPeice)
     {
-        System.out.println("in mehtod grid piece increase: ");
-        System.out.println("the row is: " + row + " the column is: " + column);
+        // System.out.println("in mehtod grid piece increase: ");
+        // System.out.println("the row is: " + row + " the column is: " + column);
         GridPeice iterator = firstGridPeice;
         while(true)
         {
             if(iterator.GetColumn() == column && iterator.GetRow() == row)
             {
-                System.out.println("in the if statement: ");
-                System.out.println("the row of grid is: " + iterator.GetRow() + " and the column of the grid piece is: " + iterator.GetColumn());
+                // System.out.println("in the if statement: ");
+                // System.out.println("the row of grid is: " + iterator.GetRow() + " and the column of the grid piece is: " + iterator.GetColumn());
                 iterator.IncreaseNumberOf();
                 break;
             }
@@ -28,8 +28,8 @@ public class Iterator {
 
     private void MoveUp(SnakePiece snake, GridPeice firstGrid)
     {
-        System.out.println("****************************");
-        System.out.println("in the move Up mehtod: ");
+        // System.out.println("****************************");
+        // System.out.println("in the move Up mehtod: ");
 
         int forNextRow = snake.GetRow();
         int forNextColumn = snake.GetColumn();
@@ -58,8 +58,8 @@ public class Iterator {
 
     private void MoveDown(SnakePiece snake, GridPeice firstGrid)
     {
-        System.out.println("****************************");
-        System.out.println("in the move down mehtod: ");
+        // System.out.println("****************************");
+        // System.out.println("in the move down mehtod: ");
 
         int forNextRow = snake.GetRow();
         int forNextColumn = snake.GetColumn();
@@ -88,8 +88,8 @@ public class Iterator {
 
     private void MoveRight(SnakePiece snake, GridPeice firstGrid)
     {
-        System.out.println("****************************");
-        System.out.println("in the move right mehtod: ");
+        // System.out.println("****************************");
+        // System.out.println("in the move right mehtod: ");
 
         int forNextRow = snake.GetRow();
         int forNextColumn = snake.GetColumn();
@@ -118,8 +118,8 @@ public class Iterator {
 
     private void MoveLeft(SnakePiece snake, GridPeice firstGrid)
     {
-        System.out.println("****************************");
-        System.out.println("in the move left mehtod: ");
+        // System.out.println("****************************");
+        // System.out.println("in the move left mehtod: ");
 
         int forNextRow = snake.GetRow();
         int forNextColumn = snake.GetColumn();
