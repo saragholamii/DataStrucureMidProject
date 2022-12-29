@@ -20,10 +20,10 @@ public class Iterator {
 
     public void Move(char move, SnakePiece snake, GridPeice firstGrid)
     {
-        if(move == 'U')             MoveUp(snake, firstGrid);
-        else if(move == 'D')        MoveDown(snake, firstGrid);
-        else if(move == 'R')        MoveRight(snake, firstGrid);
-        else if(move == 'L')        MoveLeft(snake, firstGrid);
+        if(move == 'U')             MoveRight(snake, firstGrid);        //MoveUp(snake, firstGrid);      
+        else if(move == 'D')        MoveLeft(snake, firstGrid);         //MoveDown(snake, firstGrid);
+        else if(move == 'R')        MoveDown(snake, firstGrid);         //MoveRight(snake, firstGrid);
+        else if(move == 'L')        MoveUp(snake, firstGrid);           //MoveLeft(snake, firstGrid);
     }
 
     private void MoveUp(SnakePiece snake, GridPeice firstGrid)
@@ -136,6 +136,7 @@ public class Iterator {
             snake.SetRow(forNextRow);
             snake.SetColumn(forNextColumn);
 
+            System.out.println("inside move left, the row is: " + snake.GetRow() + " the columnis:  "  + snake.GetColumn());
             GridPieceIncrease(snake.GetRow(), snake.GetColumn(), firstGrid);
 
             forNextRow = nowRowForNext;

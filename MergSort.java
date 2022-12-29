@@ -36,7 +36,8 @@ public class MergSort {
         int i = 0, j = 0, k = p;
         while(i < theFirstArrayLength && j < theSecoundArrayLength)
         {
-            if(firstArray[i][2] > secoundArray[j][2])
+            //****** increasing -> "<"  and  decreasing -> ">" */
+            if(firstArray[i][2] < secoundArray[j][2]) 
             {
                 theArray[k][0] = firstArray[i][0];
                 theArray[k][1] = firstArray[i][1];
