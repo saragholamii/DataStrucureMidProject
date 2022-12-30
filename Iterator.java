@@ -20,8 +20,8 @@ public class Iterator {
 
     public void Move(char move, SnakePiece snake, GridPeice firstGrid)
     {
-        if(move == 'U')             MoveRight(snake, firstGrid);        //MoveUp(snake, firstGrid);      
-        else if(move == 'D')        MoveLeft(snake, firstGrid);         //MoveDown(snake, firstGrid);
+        if(move == 'U')             MoveLeft(snake, firstGrid);        //MoveUp(snake, firstGrid);      
+        else if(move == 'D')        MoveRight(snake, firstGrid);         //MoveDown(snake, firstGrid);
         else if(move == 'R')        MoveDown(snake, firstGrid);         //MoveRight(snake, firstGrid);
         else if(move == 'L')        MoveUp(snake, firstGrid);           //MoveLeft(snake, firstGrid);
     }
