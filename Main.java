@@ -17,8 +17,8 @@ public class Main {
         firstGridPeice = new GridPeice(0, 0);
         previousGridPeice = firstGridPeice;
 
-        for(int i = 0; i < 10; i++)
-            for(int j = 0; j < 10; j++)
+        for(int i = 0; i < 100; i++)
+            for(int j = 0; j < 100; j++)
             {
                 if(j == 0 && i == 0)   continue;
                 GridPeice newPiece = new GridPeice(i, j);
@@ -223,7 +223,7 @@ public class Main {
         for(i = 0; i < theNumberOfTheSortedList; i++)
             System.out.println("the row : " + sortedGrid[i][0] + " the column: " + sortedGrid[i][1] + " the number: " + sortedGrid[i][2]);
 
-
+        
 
         
 
